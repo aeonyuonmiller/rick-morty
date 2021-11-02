@@ -1,22 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Card from "./components/Card";
+import Nav from "./components/Nav";
+import Layout from "./components/Layout";
+import Modal from "./components/Modal";
+
+const getMyDataAsync = async () => {
+  try {
+    const res = await fetch("https://rickandmortyapi.com/api");
+    console.log(res);
+    const data = await res.json();
+    console.log(data);
+    // if (data) {
+    //   const resSecond =
+    // };
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+getMyDataAsync();
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Nav />
+
+        <Modal />
+
+        <Layout>
+          <Card title="Title goes here" text="paragraph goes here" />
+          <Card title="Title goes here" text="paragraph goes here" />
+          <Card title="Title goes here" text="paragraph goes here" />
+        </Layout>
       </header>
     </div>
   );
