@@ -3,6 +3,9 @@ import styled from "styled-components";
 import CloseButton from "./CloseButton";
 
 const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   width: 60%;
   height: 600px;
@@ -28,7 +31,8 @@ const Backdrop = styled.div`
 
 const Closer = styled.div`
   position: absolute;
-  right: 2em;
+  top: 2em;
+  /* right: 2em; */
   transform: rotate(45deg);
   z-index: 11;
 `;

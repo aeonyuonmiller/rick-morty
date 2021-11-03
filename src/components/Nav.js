@@ -4,7 +4,7 @@ import Logo from "../image/Rick_and_Morty.js";
 
 const Wrapper = styled.div`
   box-sizing: border-box;
-  position: absolute;
+  position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   bottom: 30px;
   width: 80%;
   border-radius: 60px;
-  background: #333;
+  background: var(--surface1-light);
 `;
 
 export default function Nav() {
