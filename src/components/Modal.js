@@ -3,6 +3,7 @@ import styled from "styled-components";
 import CloseButton from "./CloseButton";
 
 const Wrapper = styled.div`
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,7 +18,7 @@ const Wrapper = styled.div`
 `;
 
 const Backdrop = styled.div`
-  position: absolute;
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,15 +38,17 @@ const Closer = styled.div`
   z-index: 11;
 `;
 
-export default function Modal() {
+export default function Modal({ closeModal }) {
   return (
     <>
-      <Closer>
-        <CloseButton />
-      </Closer>
-      <Backdrop>
-        <Wrapper>hey</Wrapper>
-      </Backdrop>
+      <div>
+        <Closer onClick={() => closeModal(false)}>
+          <CloseButton />
+        </Closer>
+        <Backdrop onClick={() => closeModal(false)}>
+          <Wrapper>hey</Wrapper>
+        </Backdrop>
+      </div>
     </>
   );
 }

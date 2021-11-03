@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { createGlobalStyle } from "styled-components";
 import Card from "./components/Card";
@@ -23,6 +23,12 @@ html {
   --surface4: hsl(var(--brand-hue) 20% 85%);
   --surface-shadow: hsl(var(--brand-hue) 10% 20%);
   --shadow-strength: 0.02;
+
+  /* input */
+  --input-border: #8b8a8b;
+  --input-focus-h: 245;
+  --input-focus-s: 100%;
+  --input-focus-l: 42%;
 }`;
 
 const getMyDataAsync = async () => {
@@ -42,15 +48,23 @@ const getMyDataAsync = async () => {
 getMyDataAsync();
 
 function App() {
+  const [openModal, setOpenModal] = useState(false);
+
   return (
     <div>
       <GlobalStyles />
       <div className="App">
         <header className="App-header">
-          {/* <Modal /> */}
+          {openModal && <Modal />}
 
           <Layout>
-            <Card title="Character goes here" text="species" />
+            <Card
+              title="Character goes here"
+              text="species"
+              onClick={() => {
+                setOpenModal(true);
+              }}
+            />
             <Card title="Character goes here" text="species" />
             <Card title="Character goes here" text="species" />
           </Layout>

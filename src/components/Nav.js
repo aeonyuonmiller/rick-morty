@@ -8,10 +8,11 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1em 1.5em;
+  padding: 1em 1em 1em 1.5em;
   bottom: 30px;
   width: 60%;
   max-width: 600px;
+  min-width: 320px;
   border-radius: 60px;
   background: var(--darkest);
 `;
