@@ -7,8 +7,8 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-  width: 60%;
-  height: 600px;
+  width: 80%;
+  height: 60vh;
   background-color: white;
   color: #333;
   padding: 1em;
@@ -30,9 +30,9 @@ const Backdrop = styled.div`
 `;
 
 const Closer = styled.div`
-  position: absolute;
+  position: fixed;
   top: 2em;
-  /* right: 2em; */
+  /* right: 1.9em; */
   transform: rotate(45deg);
   z-index: 11;
 `;

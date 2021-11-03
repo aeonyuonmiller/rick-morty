@@ -8,11 +8,12 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1em 1.3em;
+  padding: 1em 1.5em;
   bottom: 30px;
-  width: 80%;
+  width: 60%;
+  max-width: 600px;
   border-radius: 60px;
-  background: var(--surface1-light);
+  background: var(--darkest);
 `;
 
 export default function Nav() {

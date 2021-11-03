@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   transition: transform ease-in 0.4s;
 
   :hover  {
-    transform: rotate(180deg) scale(0.9);
+    transform: rotate(180deg) scale(1.1);
   }
 `;
 
