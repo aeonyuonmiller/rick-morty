@@ -1,19 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 
-const Wrapper = styled.div`
+const Wrapper = styled.button`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background: whitesmoke;
+  border: 0;
   border-radius: 20px;
   color: #333;
   padding: 1em;
-  margin: 0.5em;
   // margin-left: auto;
   // margin-right: auto;
   height: 300px;
+  transition: all ease 0.4s;
 
   h3  {
     color: blue;
@@ -26,12 +27,17 @@ const Wrapper = styled.div`
     font-size: 18px;
     line-height: 1.2em;
   }
+
+  :hover {
+    transform: scale(1.02) rotateY(180deg);
+  }
 `;
 
 export default function card(props) {
   return (
     <Wrapper>
-      <h3>{props.title}</h3>
+      <img src="{props.image}" alt="Portrait of {props.name}" />
+      <h3>{props.name}</h3>
       <p>{props.text}</p>
     </Wrapper>
   );

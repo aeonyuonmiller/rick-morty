@@ -33,19 +33,25 @@ html {
 
 const getMyDataAsync = async () => {
   try {
-    const res = await fetch("https://rickandmortyapi.com/api");
-    console.log(res);
+    const res = await fetch("https://rickandmortyapi.com/api/character");
     const data = await res.json();
-    console.log(data);
+    console.log(`data`, data);
     // if (data) {
-    //   const resSecond =
-    // };
+    //   const dataSecond = await secondFetch();
+    //   console.log(`dataSecond`, dataSecond);
+    // }
   } catch (err) {
     console.log(err);
   }
 };
 
 getMyDataAsync();
+
+// const secondFetch = async () => {
+//   const resSecond = await fetch("https://jsonplaceholder.typicode.com/photos");
+//   const dataSecond = await resSecond.json();
+//   return dataSecond;
+// };
 
 function App() {
   const [openModal, setOpenModal] = useState(false);
@@ -58,15 +64,17 @@ function App() {
           {openModal && <Modal />}
 
           <Layout>
-            <Card
-              title="Character goes here"
-              text="species"
-              onClick={() => {
-                setOpenModal(true);
-              }}
-            />
-            <Card title="Character goes here" text="species" />
-            <Card title="Character goes here" text="species" />
+            {data.map((item) => (
+              <Card
+                onClick={() => {
+                  setOpenModal(true);
+                }}
+                key="{props.id}"
+                name="{props.name}"
+                text="{props.species}"
+                image="{props.image}"
+              />
+            ))}
           </Layout>
 
           <Nav />
