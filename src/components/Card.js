@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Wrapper = styled.button`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,12 +33,12 @@ const Wrapper = styled.button`
   }
 `;
 
-export default function card(props) {
+export default function card({ onClick, image, name, text, ...props }) {
   return (
-    <Wrapper>
-      <img src="{props.image}" alt="Portrait of {props.name}" />
-      <h3>{props.name}</h3>
-      <p>{props.text}</p>
+    <Wrapper onClick={() => onClick({ image, text, name })} {...props}>
+      <img src={image} alt={`Portrait of ${name}`} />
+      <h3>{name}</h3>
+      <p>{text}</p>
     </Wrapper>
   );
 }

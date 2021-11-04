@@ -3,11 +3,9 @@ import styled from "styled-components";
 import CloseButton from "./CloseButton";
 
 const Wrapper = styled.div`
-  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
   width: 80%;
   height: 60vh;
   background-color: white;
@@ -22,8 +20,10 @@ const Backdrop = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   background-color: rgba(0, 0, 0, 0.3);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
@@ -38,17 +38,15 @@ const Closer = styled.div`
   z-index: 11;
 `;
 
-export default function Modal({ closeModal }) {
+export default function Modal({ onClose, content, ...props }) {
   return (
-    <>
-      <div>
-        <Closer onClick={() => closeModal(false)}>
-          <CloseButton />
-        </Closer>
-        <Backdrop onClick={() => closeModal(false)}>
-          <Wrapper>hey</Wrapper>
-        </Backdrop>
-      </div>
-    </>
+    <Backdrop {...props}>
+      <Closer onClick={() => onClose()}>
+        <CloseButton />
+      </Closer>
+      <Wrapper>
+        <div>{content}</div>
+      </Wrapper>
+    </Backdrop>
   );
 }
