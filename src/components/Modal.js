@@ -32,8 +32,7 @@ const Backdrop = styled.div`
 
 const Closer = styled.div`
   position: fixed;
-  top: 2em;
-  /* right: 1.9em; */
+  top: 3rem;
   transform: rotate(45deg);
   z-index: 11;
 `;

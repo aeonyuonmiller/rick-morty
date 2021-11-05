@@ -5,7 +5,7 @@ const Wrapper = styled.div`
   position: relative;
   width: 90%;
   height: 100%;
-  margin: 3em 0;
+  margin: 3em 0 6em 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5em;

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import { createGlobalStyle } from "styled-components";
+import Lottie from "react-lottie";
+
+import Void from "./image/void";
 import Card from "./components/Card";
 import Nav from "./components/Nav";
 import Layout from "./components/Layout";
@@ -44,6 +47,15 @@ function App() {
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: Void,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
   // useEffect(() => {
   //   // onMount & onUpdate
   //   return () => {
@@ -78,7 +90,9 @@ function App() {
       <GlobalStyles />
       <div className="App">
         {loading ? (
-          <h1>Loading</h1>
+          <header className="App-header">
+            <Lottie options={defaultOptions} width={500} />
+          </header>
         ) : (
           <header className="App-header">
             {openModal && (
@@ -90,6 +104,7 @@ function App() {
                 content={
                   <div>
                     <h1>{modalData.name}</h1>
+                    <p>{modalData.species}</p>
                   </div>
                 }
               />

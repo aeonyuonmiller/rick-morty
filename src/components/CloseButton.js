@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   background-color: var(--darkest);
   padding: 0.5em;
   transform: rotate(0deg) scale(1);
-  transition: transform ease-in 0.4s;
+  transition: transform ease 0.2s;
 
   :hover  {
     transform: rotate(180deg) scale(1.1);
@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 
 export default function CloseButton() {
   return (
-    <Wrapper>
+    <Wrapper tabIndex="0">
       <Close />
     </Wrapper>
   );
