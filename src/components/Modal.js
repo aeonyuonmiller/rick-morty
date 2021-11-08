@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   color: #333;
   padding: 1em;
   border-radius: 20px;
+  overflow: hidden;
   z-index: 10;
 `;
 

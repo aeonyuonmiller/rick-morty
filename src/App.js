@@ -34,12 +34,6 @@ html {
   --input-focus-l: 42%;
 }`;
 
-// const secondFetch = async () => {
-//   const resSecond = await fetch("https://jsonplaceholder.typicode.com/photos");
-//   const dataSecond = await resSecond.json();
-//   return dataSecond;
-// };
-
 function App() {
   const [openModal, setOpenModal] = useState(false);
   const [modalData, setModalData] = useState({});
@@ -70,10 +64,6 @@ function App() {
         const data = await res.json();
         console.log(`data`, data);
         return data.results;
-        // if (data) {
-        //   const dataSecond = await secondFetch();
-        //   console.log(`dataSecond`, dataSecond);
-        // }
       } catch (err) {
         console.log(err);
       }
@@ -105,6 +95,7 @@ function App() {
                   <div>
                     <h1>{modalData.name}</h1>
                     <p>{modalData.species}</p>
+                    <img src={modalData.image} alt={modalData.name} />
                   </div>
                 }
               />

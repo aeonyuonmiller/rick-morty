@@ -8,14 +8,16 @@ const Wrapper = styled.div`
   margin: 3em 0 6em 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5em;
+  gap: 1em;
 
   @media (max-width: 1024px) {
     grid-template-columns: 1fr 1fr;
   }
 
   @media (max-width: 768px) {
+    width: 80%;
     grid-template-columns: 1fr;
+    gap: 1em;
   }
 `;
 

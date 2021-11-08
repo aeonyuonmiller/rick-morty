@@ -29,14 +29,3 @@
 .App-link {
   color: var(--brand);
 }
-
-input {
-  font-size: 12px;
-  font-size: max(12px, 1em);
-  width: 50%;
-  font-family: inherit;
-  padding: 0.25em 0.5em;
-  background-color: #fff;
-  border: 0.5px solid var(--input-border);
-  border-radius: 30px;
-}
