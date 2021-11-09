@@ -49,9 +49,7 @@ export default function Modal({ onClose, content, ...props }) {
       <Closer onClick={onClose}>
         <CloseButton />
       </Closer>
-      <Wrapper>
-        <div>{content}</div>
-      </Wrapper>
+      <Wrapper>{content}</Wrapper>
     </Backdrop>
   );
 }
