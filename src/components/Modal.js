@@ -40,6 +40,7 @@ const Closer = styled.div`
   align-items: center;
   transform: rotate(45deg);
   z-index: 11;
+  /* filter: blur(10px) contrast(15); // liquid-edge */
 `;
 
 export default function Modal({ onClose, content, ...props }) {
