@@ -4,13 +4,19 @@ import { createGlobalStyle } from "styled-components";
 import Lottie from "react-lottie";
 
 import Void from "./image/void";
-import Card from "./components/Card";
+import Card from "./components/Card/Card";
 import Nav from "./components/Nav";
 import Layout from "./components/Layout";
 import Modal from "./components/Modal";
 
 const GlobalStyles = createGlobalStyle`
 html {
+  /* type system */
+  --type: clamp(var(--min-size), var(---liquid-size), var(---max-size));
+  --min-size: 20px;
+  --liquid-size: 7vw + 1rem;
+  --max-size: 160px;
+
   /* brand foundation */
   --brand-hue: 188;
   --brand-saturation: 82%;
@@ -81,7 +87,7 @@ function App() {
       <div className="App">
         {loading ? (
           <header className="App-header">
-            <Lottie options={defaultOptions} width={500} />
+            <Lottie options={defaultOptions} width={200} />
           </header>
         ) : (
           <header className="App-header">
@@ -102,16 +108,16 @@ function App() {
             )}
 
             <Layout>
-              {characters.map((character) => (
+              {characters.map(({ name, species, image, id }) => (
                 <Card
                   onClick={(char) => {
                     setModalData(char);
                     setOpenModal(true);
                   }}
-                  key={character.id}
-                  name={character.name}
-                  text={character.species}
-                  image={character.image}
+                  key={id}
+                  name={name}
+                  text={species}
+                  image={image}
                 />
               ))}
             </Layout>

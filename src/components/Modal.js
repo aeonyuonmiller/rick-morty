@@ -33,7 +33,11 @@ const Backdrop = styled.div`
 
 const Closer = styled.div`
   position: fixed;
+  padding: 1em;
   top: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transform: rotate(45deg);
   z-index: 11;
 `;
@@ -41,7 +45,7 @@ const Closer = styled.div`
 export default function Modal({ onClose, content, ...props }) {
   return (
     <Backdrop {...props}>
-      <Closer onClick={() => onClose()}>
+      <Closer onClick={onClose}>
         <CloseButton />
       </Closer>
       <Wrapper>

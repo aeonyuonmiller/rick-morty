@@ -8,21 +8,23 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1em 1em 1em 1.5em;
+  padding: 1em 0.7em 1em 1.5em;
   bottom: 30px;
   width: 60%;
   max-width: 600px;
   min-width: 320px;
+  height: 80px;
   border-radius: 60px;
   background: var(--darkest);
 
   input {
     font-size: 12px;
-    font-size: max(12px, 1em);
-    width: 5em;
+    /* font-size: max(8px, 1em); */
+    width: 30%;
+    height: 3em;
     color: var(--surface1);
     font-family: inherit;
-    padding: 0.25em 0.5em;
+    padding: 0.25em 2em;
     background-color: var(--darkest);
     border: 1px solid var(--brand);
     border-radius: 30px;
@@ -31,7 +33,7 @@ const Wrapper = styled.div`
   }
 
   input:focus  {
-    width: 8em;
+    width: 80%;
   }
 
   input::placeholder {
