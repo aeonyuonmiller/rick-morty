@@ -6,6 +6,11 @@
   line-height: 0.9em;
 }
 
+.flip-card p {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+}
+
 .flip-card {
   background-color: transparent;
   border: 0;
