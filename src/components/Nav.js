@@ -46,7 +46,7 @@ export default function Nav() {
   return (
     <Wrapper>
       <Logo />
-      <input type="text" placeholder="Search.."></input>
+      <input type="text" tabIndex="1" placeholder="Search.."></input>
     </Wrapper>
   );
 }
