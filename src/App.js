@@ -45,7 +45,10 @@ function App() {
   const [modalData, setModalData] = useState({});
 
   const [characters, setCharacters] = useState([]);
+  const [displayedCharacter, setDisplayedCharacter] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const [searchInput, setSearchInput] = useState("");
 
   const defaultOptions = {
     loop: true,
@@ -56,20 +59,23 @@ function App() {
     },
   };
 
-  // useEffect(() => {
-  //   // onMount & onUpdate
-  //   return () => {
-  //     // componentUnmount
-  //   }
-  // }, [])
-
+  // first API-call
   useEffect(() => {
     const getMyDataAsync = async () => {
       try {
         const res = await fetch("https://rickandmortyapi.com/api/character");
         const data = await res.json();
         console.log(`data`, data);
-        return data.results;
+        const characters = data.results.map((char) => {
+          return {
+            name: char.name,
+            image: char.image,
+            species: char.species,
+            searchName: char.name.toLowerCase(),
+            id: char.id,
+          };
+        });
+        return characters;
       } catch (err) {
         console.log(err);
       }
@@ -77,9 +83,18 @@ function App() {
 
     getMyDataAsync().then((charactersData) => {
       setCharacters(charactersData);
+      setDisplayedCharacter(charactersData);
       setLoading(false);
     });
   }, []);
+
+  // filtered characters
+  useEffect(() => {
+    const filteredCharacter = characters.filter((char) =>
+      char.searchName.includes(searchInput)
+    );
+    setDisplayedCharacter(filteredCharacter);
+  }, [searchInput]);
 
   return (
     <div>
@@ -108,8 +123,9 @@ function App() {
             )}
 
             <Layout>
-              {characters.map(({ name, species, image, id }) => (
+              {displayedCharacter.map(({ name, species, image, id }) => (
                 <Card
+                  key={id}
                   onClick={(char) => {
                     setModalData(char);
                     setOpenModal(true);
@@ -122,7 +138,11 @@ function App() {
               ))}
             </Layout>
 
-            <Nav />
+            <Nav
+              onFilter={(searchValue) =>
+                setSearchInput(searchValue.toLowerCase())
+              }
+            />
           </header>
         )}
       </div>

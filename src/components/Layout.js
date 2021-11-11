@@ -7,6 +7,7 @@ const Wrapper = styled.div`
   height: 100%;
   margin: 3em 0 5em 0;
   display: grid;
+
   grid-template-columns: repeat(3, 1fr);
   gap: 3em;
   transition: all ease-in-out 1s;

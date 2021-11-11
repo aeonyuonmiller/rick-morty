@@ -42,11 +42,16 @@ const Wrapper = styled.div`
   }
 `;
 
-export default function Nav() {
+export default function Nav({ searchItems, onFilter, ...props }) {
   return (
-    <Wrapper>
+    <Wrapper {...props}>
       <Logo />
-      <input type="text" tabIndex="1" placeholder="Search.."></input>
+      <input
+        type="text"
+        tabIndex="1"
+        placeholder="Search.."
+        onChange={(e) => onFilter(e.target.value)}
+      ></input>
     </Wrapper>
   );
 }
