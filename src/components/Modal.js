@@ -47,7 +47,6 @@ const Closer = styled.div`
 
 const Content = styled.div`
   padding: 0 1em;
-  width: 50%;
 `;
 
 const ImagePos = styled.img`
