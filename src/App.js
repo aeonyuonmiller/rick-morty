@@ -11,6 +11,8 @@ import Modal from "./components/Modal";
 
 const GlobalStyles = createGlobalStyle`
 html {
+  * { margin: 0; }
+
   /* type system */
   --type: clamp(var(--min-size), var(---liquid-size), var(---max-size));
   --min-size: 20px;
@@ -42,7 +44,7 @@ html {
 
 function App() {
   const [openModal, setOpenModal] = useState(false);
-  const [modalData, setModalData] = useState({});
+  const [selectedChar, setSelectedChar] = useState({});
 
   const [characters, setCharacters] = useState([]);
   const [displayedCharacter, setDisplayedCharacter] = useState([]);
@@ -84,7 +86,9 @@ function App() {
     getMyDataAsync().then((charactersData) => {
       setCharacters(charactersData);
       setDisplayedCharacter(charactersData);
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
     });
   }, []);
 
@@ -112,13 +116,7 @@ function App() {
                   setOpenModal(false);
                   console.log("closed");
                 }}
-                content={
-                  <div>
-                    <h1>{modalData.name}</h1>
-                    <p>{modalData.species}</p>
-                    <img src={modalData.image} alt={modalData.name} />
-                  </div>
-                }
+                char={selectedChar}
               />
             )}
 
@@ -126,11 +124,10 @@ function App() {
               {displayedCharacter.map(({ name, species, image, id }) => (
                 <Card
                   key={id}
-                  onClick={(char) => {
-                    setModalData(char);
+                  onClick={() => {
+                    setSelectedChar({ name, species, image, id });
                     setOpenModal(true);
                   }}
-                  key={id}
                   name={name}
                   text={species}
                   image={image}

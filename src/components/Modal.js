@@ -4,16 +4,18 @@ import CloseButton from "./CloseButton";
 
 const Wrapper = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
   width: 80%;
   height: 60vh;
   background-color: white;
   color: #333;
-  padding: 1em;
   border-radius: 20px;
   overflow: hidden;
   z-index: 10;
+
+  @media (max-width: 950px) {
+    flex-direction: column;
+  }
 `;
 
 const Backdrop = styled.div`
@@ -43,13 +45,39 @@ const Closer = styled.div`
   /* filter: blur(10px) contrast(15); // liquid-edge */
 `;
 
-export default function Modal({ onClose, content, ...props }) {
+const Content = styled.div`
+  padding: 0 1em;
+  width: 50%;
+`;
+
+const ImagePos = styled.img`
+  position: relative;
+  top: 0;
+  margin-bottom: 0;
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+
+  @media (max-width: 950px) {
+    width: 100%;
+    height: 70%;
+    padding-bottom: 1em;
+  }
+`;
+
+export default function Modal({ onClose, content, char, ...props }) {
   return (
     <Backdrop {...props}>
       <Closer onClick={onClose}>
         <CloseButton />
       </Closer>
-      <Wrapper>{content}</Wrapper>
+      <Wrapper>
+        <ImagePos src={char.image} alt={char.name} />
+        <Content>
+          <h2>{char.name}</h2>
+          <p>{char.species}</p>
+        </Content>
+      </Wrapper>
     </Backdrop>
   );
 }
