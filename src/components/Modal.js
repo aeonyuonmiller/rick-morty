@@ -1,9 +1,9 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import styled from "styled-components";
 import CloseButton from "./CloseButton";
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   display: flex;
   align-items: center;
   width: 80%;
@@ -35,14 +35,13 @@ const Backdrop = styled(motion.div)`
   z-index: 9;
 `;
 
-const Closer = styled.div`
+const Closer = styled(motion.div)`
   position: fixed;
   padding: 1em;
   top: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: rotate(45deg);
   z-index: 11;
 `;
 
@@ -71,28 +70,36 @@ const ImagePos = styled.img`
 `;
 
 const variants = {
-  open: { opacity: 1, x: 0 },
-  closed: { opacity: 0, x: "-100%" },
+  open: { scale: 1, y: 0, rotate: 0, transition: { delay: 0.2 } },
+  closed: { scale: 0, y: -100, rotate: 360 },
 };
 
 export default function Modal({ onClose, content, char, ...props }) {
   return (
-    <Backdrop
-      {...props}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
-      <Closer onClick={onClose}>
-        <CloseButton />
-      </Closer>
-      <Wrapper>
-        <ImagePos src={char.image} alt={char.name} />
-        <Content>
-          <h2>{char.name}</h2>
-          <p>{char.species}</p>
-        </Content>
-      </Wrapper>
-    </Backdrop>
+    <AnimatePresence>
+      <Backdrop
+        {...props}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <Closer
+          onClick={onClose}
+          initial="closed"
+          animate="open"
+          exit="closed"
+          variants={variants}
+        >
+          <CloseButton />
+        </Closer>
+        <Wrapper initial={{ y: 50 }} animate={{ y: 0 }} exit={{ y: -50 }}>
+          <ImagePos src={char.image} alt={char.name} />
+          <Content>
+            <h2>{char.name}</h2>
+            <p>{char.species}</p>
+          </Content>
+        </Wrapper>
+      </Backdrop>
+    </AnimatePresence>
   );
 }

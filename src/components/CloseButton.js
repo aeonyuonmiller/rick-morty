@@ -8,11 +8,11 @@ const Wrapper = styled.div`
   border-radius: 50%;
   background-color: var(--brand);
   padding: 0.5em;
-  transform: rotate(0deg) scale(1);
+  transform: rotate(45deg) scale(1);
   transition: transform ease 0.2s;
 
   :hover  {
-    transform: rotate(180deg) scale(1.1);
+    transform: rotate(225deg) scale(1.1);
   }
 `;
 
