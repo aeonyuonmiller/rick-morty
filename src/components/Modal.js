@@ -71,7 +71,7 @@ const ImagePos = styled(motion.img)`
 `;
 
 const variants = {
-  open: { scale: 1, y: 0, rotate: 0, transition: { delay: 0.2 } },
+  open: { scale: 1, y: 0, rotate: 0, transition: { delay: 0.6 } },
   closed: { scale: 0, y: -100, rotate: 360 },
   exit: { scale: 0, rotate: 800 },
 };
