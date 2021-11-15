@@ -34,7 +34,7 @@
 /* Do an horizontal flip when you move the mouse over the flip box container */
 .flip-card:hover .flip-card-inner,
 .flip-card:focus .flip-card-inner {
-  transform: rotateY(180deg) scale(1.05) rotateZ(6deg) rotateX(-6deg);
+  transform: rotateY(180deg) rotateZ(-6deg) rotateX(6deg) scale(1.05);
   z-index: 10;
 }
 

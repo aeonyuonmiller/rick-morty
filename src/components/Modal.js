@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import styled from "styled-components";
 import CloseButton from "./CloseButton";
 
@@ -18,7 +19,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Backdrop = styled.div`
+const Backdrop = styled(motion.div)`
   position: fixed;
   display: flex;
   justify-content: center;
@@ -30,6 +31,7 @@ const Backdrop = styled.div`
   background-color: rgba(0, 0, 0, 0.3);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
+  /* filter: blur(10px) contrast(40); // liquid-edge */
   z-index: 9;
 `;
 
@@ -42,7 +44,6 @@ const Closer = styled.div`
   align-items: center;
   transform: rotate(45deg);
   z-index: 11;
-  /* filter: blur(10px) contrast(15); // liquid-edge */
 `;
 
 const Content = styled.div`
@@ -69,9 +70,19 @@ const ImagePos = styled.img`
   }
 `;
 
+const variants = {
+  open: { opacity: 1, x: 0 },
+  closed: { opacity: 0, x: "-100%" },
+};
+
 export default function Modal({ onClose, content, char, ...props }) {
   return (
-    <Backdrop {...props}>
+    <Backdrop
+      {...props}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <Closer onClick={onClose}>
         <CloseButton />
       </Closer>

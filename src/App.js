@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import "./App.css";
 import { createGlobalStyle } from "styled-components";
 import Lottie from "react-lottie";
@@ -101,49 +102,50 @@ function App() {
   }, [searchInput]);
 
   return (
-    <div>
-      <GlobalStyles />
-      <div className="App">
-        {loading ? (
-          <header className="App-header">
-            <Lottie options={defaultOptions} width={200} />
-          </header>
-        ) : (
-          <header className="App-header">
-            {openModal && (
-              <Modal
-                onClose={() => {
-                  setOpenModal(false);
-                  console.log("closed");
-                }}
-                char={selectedChar}
-              />
-            )}
-
-            <Layout>
-              {displayedCharacter.map(({ name, species, image, id }) => (
-                <Card
-                  key={id}
-                  onClick={() => {
-                    setSelectedChar({ name, species, image, id });
-                    setOpenModal(true);
+    <AnimatePresence>
+      <div>
+        <GlobalStyles />
+        <div className="App">
+          {loading ? (
+            <header className="App-header">
+              <Lottie options={defaultOptions} width={200} />
+            </header>
+          ) : (
+            <header className="App-header">
+              {openModal && (
+                <Modal
+                  onClose={() => {
+                    setOpenModal(false);
                   }}
-                  name={name}
-                  text={species}
-                  image={image}
+                  char={selectedChar}
                 />
-              ))}
-            </Layout>
+              )}
 
-            <Nav
-              onFilter={(searchValue) =>
-                setSearchInput(searchValue.toLowerCase())
-              }
-            />
-          </header>
-        )}
+              <Layout>
+                {displayedCharacter.map(({ name, species, image, id }) => (
+                  <Card
+                    key={id}
+                    onClick={() => {
+                      setSelectedChar({ name, species, image, id });
+                      setOpenModal(true);
+                    }}
+                    name={name}
+                    text={species}
+                    image={image}
+                  />
+                ))}
+              </Layout>
+
+              <Nav
+                onFilter={(searchValue) =>
+                  setSearchInput(searchValue.toLowerCase())
+                }
+              />
+            </header>
+          )}
+        </div>
       </div>
-    </div>
+    </AnimatePresence>
   );
 }
 
