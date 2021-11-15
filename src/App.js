@@ -102,50 +102,48 @@ function App() {
   }, [searchInput]);
 
   return (
-    <AnimatePresence>
-      <div>
-        <GlobalStyles />
-        <div className="App">
-          {loading ? (
-            <header className="App-header">
-              <Lottie options={defaultOptions} width={200} />
-            </header>
-          ) : (
-            <header className="App-header">
-              {openModal && (
-                <Modal
-                  onClose={() => {
-                    setOpenModal(false);
-                  }}
-                  char={selectedChar}
-                />
-              )}
-
-              <Layout>
-                {displayedCharacter.map(({ name, species, image, id }) => (
-                  <Card
-                    key={id}
-                    onClick={() => {
-                      setSelectedChar({ name, species, image, id });
-                      setOpenModal(true);
-                    }}
-                    name={name}
-                    text={species}
-                    image={image}
-                  />
-                ))}
-              </Layout>
-
-              <Nav
-                onFilter={(searchValue) =>
-                  setSearchInput(searchValue.toLowerCase())
-                }
+    <div>
+      <GlobalStyles />
+      <div className="App">
+        {loading ? (
+          <header className="App-header">
+            <Lottie options={defaultOptions} width={200} />
+          </header>
+        ) : (
+          <header className="App-header">
+            {openModal && (
+              <Modal
+                onClose={() => {
+                  setOpenModal(false);
+                }}
+                char={selectedChar}
               />
-            </header>
-          )}
-        </div>
+            )}
+
+            <Layout>
+              {displayedCharacter.map(({ name, species, image, id }) => (
+                <Card
+                  key={id}
+                  onClick={() => {
+                    setSelectedChar({ name, species, image, id });
+                    setOpenModal(true);
+                  }}
+                  name={name}
+                  text={species}
+                  image={image}
+                />
+              ))}
+            </Layout>
+
+            <Nav
+              onFilter={(searchValue) =>
+                setSearchInput(searchValue.toLowerCase())
+              }
+            />
+          </header>
+        )}
       </div>
-    </AnimatePresence>
+    </div>
   );
 }
 
